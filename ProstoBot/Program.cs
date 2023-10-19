@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using ProstoBot;
 using Telegram.Bot;
 using ProstoBot.Controllers;
+using ProstoBot.Services;
 
 namespace ProstoBot
 {
@@ -36,6 +37,7 @@ namespace ProstoBot
             services.AddTransient<DefaultMessageController>();            
             services.AddTransient<TextMessageController>();
             services.AddTransient<InlineKeyboardController>();
+            services.AddSingleton<IStorage, MemoryStorage>();
             // Регистрируем постоянно активный сервис бота
             services.AddHostedService<Bot>();
         }

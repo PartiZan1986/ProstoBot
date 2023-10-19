@@ -8,6 +8,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 using Telegram.Bot.Types.Enums;
 
+
 namespace ProstoBot.Controllers
 {
     public class TextMessageController
@@ -36,12 +37,13 @@ namespace ProstoBot.Controllers
                     // передаем кнопки вместе с сообщением (параметр ReplyMarkup)
                     await _telegramClient.SendTextMessageAsync(message.Chat.Id, $"<b>  Наш бот может подсчитать количество символов и сумму чисел в текст.</b> {Environment.NewLine}" +
                         $"{Environment.NewLine}Выбирайте, что будем делать.{Environment.NewLine}", cancellationToken: ct, parseMode: ParseMode.Html, replyMarkup: new InlineKeyboardMarkup(buttons));
-
                     break;
-                default:
+                    
+                    default:
+
                     await _telegramClient.SendTextMessageAsync(message.Chat.Id, "Отправьте сообщение(тестовое).", cancellationToken: ct);
                     break;
             }
-        }
+        }        
     }
 }
